@@ -6,6 +6,11 @@
   {% endif %}
 </header>
 
+<p class="post-meta">
+  {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+  {% include post/categories.html %}
+</p>
+
 <section class="post">
   <div class="post-description">
 
@@ -16,7 +21,7 @@
     {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
     {% if excerpted == 'true' %}
       <footer>
-        <a rel="full-article" href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
+        <a href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
       </footer>
     {% endif %}
   {% endif %}
