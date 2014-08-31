@@ -1,28 +1,25 @@
-{% if post %}
-  {% assign title = post.title %}
-{% else %}
-  {% assign title = page.title %}
-{% endif %}
-
-{% unless page.no_header %}
-  <header class="post-header">
-
-    <h2 class="post-title"><a href="{{ root_url }}{{ post.url }}">{{ title }}</a></h2>
-
-    <p class="post-meta">
-      By <a class="post-author" href="#">Calum Halcrow</a> under <a class="post-category post-category-js" href="#">JavaScript</a>
-    </p>
-  </header>
-{% endunless %}
+<header class="post-header">
+  {% if page.single %}
+    <h2 class="post-title">{{ post.title }}</h2>
+  {% else %}
+    <h2 class="post-title"><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></h2>
+  {% endif %}
+</header>
 
 <section class="post">
   <div class="post-description">
-    <p>{{ content | excerpt }}</p>
+
+  {% if page.single %}
+    {{ content }}
+  {% else %}
+    {{ content | excerpt }}
     {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
     {% if excerpted == 'true' %}
       <footer>
         <a rel="full-article" href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
       </footer>
     {% endif %}
+  {% endif %}
+
   </div>
 </section>
