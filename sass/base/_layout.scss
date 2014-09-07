@@ -1,6 +1,12 @@
 $link-color: #63aabc;
 $nav-hover-color: rgb(223, 223, 223);
 
+$noise-bg: image-url('noise.png') top left !default;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+.mono { font-family: $mono; }
+$sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
+.sans { font-family: $sans; }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
